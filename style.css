@@ -1,24 +1,24 @@
 body {
 	background-color: #E86176;
 }
-#header {
-	
+#header, #score {
+	text-align: center;
+	font-style: italic;
+	font-family: 'lato';
+	color: white;
 }
 #game-window {
 	background-color: white;
 	border-radius: 5px;
 	border: 2px solid black;
-	height: 600px;
-	width: 700px;
-	margin: 50px auto;
-
+	height: 550px;
+	width: 800px;
+	margin: 20px auto;
 }
-
-
 .circle {
-	background-color: red;
+	background-color: #7679FF;
 	border-radius: 100px;
-	height: 200px;
-	width: 200px;
+	height: 80px;
+	width: 80px;
 	position: relative;
 }
