@@ -13,12 +13,14 @@ body {
 	border: 2px solid black;
 	height: 550px;
 	width: 800px;
+	position: relative;
 	margin: 20px auto;
 }
 .circle {
 	background-color: #7679FF;
 	border-radius: 100px;
-	height: 80px;
-	width: 80px;
-	position: relative;
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	cursor: pointer;
 }

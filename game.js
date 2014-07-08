@@ -10,7 +10,7 @@ function Circle() {
 	this.diameter = 30 + Math.random() * 50;
 	this.speed = 500 + Math.random() * 1500;
 
-//  this function 
+//  this function is doing the html representation of the newly created circle. 
 	this.render = function() {
 		var _this = this;
 
@@ -18,43 +18,44 @@ function Circle() {
 			.css('left', this.x)
 			.css('top', this.y)
 			.css('height', this.diameter)
-			.css('width', this.diameter);
+			.css('width', this.diameter)
 			.on('click', function() {
 				_this.kill();
 			});
 
-		$('#game').append(this.$me);	
+		$('#game-window').append(this.$me);	
 	};
-}; 
 
 // this function moves the bubles in the game 
-this.move = function() {
-	var _this = this;
-	this.$me.animate ({
-		top: Math.random() * 450,
-		left: Math.random() * 450
-	}, {
-		duration: this.speed,
-		complete: function() {
-			_this.move();
-		}
-	});
-};
-
-// this function kills the bubble once they have been clicked
-this.kill = function() {
-	this.$me.css('background-color', 'red')
-		.effect({
-			effect: 'explode',
-			duration: 100,
+	this.move = function() {
+		var _this = this;
+		this.$me.animate ({
+			top: Math.random() * 450,
+			left: Math.random() * 450
+		}, {
+			duration: this.speed,
 			complete: function() {
-				$(this).remove();
-				$('#score').text(window.game.score += 100);
-			},
-			queue: false
+				_this.move();
+			}
 		});
-};
-//  this deal with creating a new circle
+	};
+
+	// this function kills the bubble once they have been clicked
+	this.kill = function() {
+		this.$me.css('background-color', 'red')
+			.effect({
+				effect: 'explode',
+				duration: 100,
+				complete: function() {
+					$(this).remove();
+					$('#score').text(window.game.score += 100);
+				},
+				queue: false
+			});
+	};
+
+}; 
+	//  this deal with creating a new circle
 Circle.init = function() {
 	var circle = new Circle();
 	circle.render();
@@ -73,9 +74,9 @@ this.circleCount = circleCount;
 	this.start = function() {
 		for(var i=0; i < this.circleCount; i++) {
 
-			circles.push(new Circle.init());
-			circles[i].render();
-			circles[i].move();
+			this.circles.push(new Circle.init());
+			this.circles[i].render();
+			this.circles[i].move();
 		}
 
 		$('#score').text(this.score);
@@ -91,10 +92,3 @@ this.circleCount = circleCount;
 	};
 };
 
-	// var circles = [];
-	// for(var i=0; i < 10; i++) {
-
-	// circles.push(new Circle());
-	// circles[i].render
-	// circles[i].move
-	// }
