@@ -1,3 +1,19 @@
+function Game(circleCount, duration) {
+	this.score =0;
+	this.circles = [];
+	this.duration = 10;
+	this.circleCount =10;
+
+	this.start = function() {
+	for(var i=0; i < this.circleCount; i++) {
+	// create circle and then add to array
+	circles.push(new Circle());
+	circles[i].render();
+	circles[i].move();
+	}
+
+	$('#score').text(this.score);
+}
 
 function Circle() {
 	this.x = Math.random() * 450;
@@ -12,19 +28,26 @@ function Circle() {
 			.css('height', this.diameter)
 			.css('width', this.diameter);
 		$('#game').append(this.$me);
+			.on('click')
 
 	};
 
 	this.move = function() {
+		var _this = this;
 		this.$me.animate ({
 			top: "+=300",
 			left: "+=300"
 		}, {
+		duration: this.speed,
 		complete: function() {
-			this.move();
+			_this.move();
 		})
 	}
 }
+
+	this.kill = function() {
+
+	}
 
 ;
 $(document).ready(function() {
