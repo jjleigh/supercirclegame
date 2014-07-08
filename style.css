@@ -1,4 +1,7 @@
 .circle {
 	background-color: red;
-	border-radius: 50px;
+	border-radius: 100px;
+	height: 200px;
+	width: 200px;
+	position: relative;
 }
