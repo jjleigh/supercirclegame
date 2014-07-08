@@ -1,8 +1,8 @@
 function Game(circleCount, duration) {
 	this.score =0;
 	this.circles = [];
-	this.duration = 10;
-	this.circleCount =10;
+	this.duration = (duration || 10) * 1000;
+	this.circleCount = circleCount || 10;
 
 	this.start = function() {
 	for(var i=0; i < this.circleCount; i++) {
@@ -13,7 +13,16 @@ function Game(circleCount, duration) {
 	}
 
 	$('#score').text(this.score);
+	setTimeout(this.stop, this.duration);
 }
+
+	this.stop = function() {
+		alert('Game over!');
+
+		for (var i = 0; i < this.circleCount; i++) {
+			game.circles[i].$me.remove();
+		}
+	}
 
 function Circle() {
 	this.x = Math.random() * 450;
